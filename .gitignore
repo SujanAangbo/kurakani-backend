@@ -1,0 +1,11 @@
+# Ignore environment files
+.env
+
+# Ignore node modules
+node_modules/
+
+# Ignore secret service account keys
+config/firebaseServiceAccount.json
+
+# Ignore logs
+*.log
