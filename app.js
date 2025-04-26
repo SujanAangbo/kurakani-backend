@@ -7,10 +7,13 @@ require("dotenv").config();
 
 // firebase setup
 const admin = require("firebase-admin");
-const serviceAccount = require("./config/firebaseServiceAccount.json");
+const serviceAccount = process.env.NODE_ENV === 'prod'
+  ? require('/etc/secrets/firebaseServiceAccount.json')
+  : require(path.join(__dirname, 'config', 'firebaseServiceAccount.json'));
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(process.env.NODE_ENV === 'prod'
+    ? '/etc/secrets/firebaseServiceAccount.json' : serviceAccount),
 });
 
 // user routes
