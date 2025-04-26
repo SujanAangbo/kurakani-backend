@@ -11,7 +11,7 @@ const router = Router();
 router.post(
   "/login",
   checkSchema(userLoginValidationSchema),
-  UserController.handleCreateUser,
+  UserController.handleUserLogin,
 );
 
 router.put("/user/status", UserController.handleChangeUserStatus);
